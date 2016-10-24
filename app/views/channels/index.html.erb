@@ -2,6 +2,6 @@
 <ul>
   <% @channels.each do |c| %>
     <li>
-      <%= c.name %>
+      <%= link_to c.name, channel_path(c) %>
     </li>
   <% end %>

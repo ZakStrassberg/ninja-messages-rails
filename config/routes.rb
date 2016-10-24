@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'channels/index'
-
-  get 'channel/index'
+  resources :channels
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
