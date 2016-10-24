@@ -1,0 +1,6 @@
+h1
+  | Channels
+ul
+  - @channels.each do |c|
+    li
+      = link_to c.name, channel_path(c)
