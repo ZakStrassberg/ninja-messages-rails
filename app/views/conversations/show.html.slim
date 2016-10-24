@@ -1,0 +1,7 @@
+- breadcrumb @conversation
+
+h1 = @conversation.name
+
+= render( partial: "posts/show", collection: @conversation.posts, as: :post )|| "There are no posts"
+
+= render "posts/new"

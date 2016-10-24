@@ -1,2 +1,9 @@
-h1
-  = @channel.name
+- breadcrumb :channel, @channel
+
+h1 = @channel.name
+
+h2 = link_to "New Conversation", new_channel_conversation_path(@channel)
+ul#conversations
+  - @channel.conversations.each do |con|
+    li = link_to con.name, [@channel, con]
+

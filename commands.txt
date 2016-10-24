@@ -1,7 +1,7 @@
 User name:string email:string password:digest
 Channel name:string description:text
-Conversation name:string owners:reference
-Post conversation:reference user:reference message:text
+Conversation name:string
+Post conversation:references user:references message:text
 
 
 

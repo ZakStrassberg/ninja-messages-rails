@@ -27,7 +27,11 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
-gem "slim-rails"
+gem 'slim-rails'
+gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'gretel'
+gem 'pug-rails', '~> 2.0'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

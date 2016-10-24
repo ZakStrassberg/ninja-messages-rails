@@ -10,13 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161024185401) do
+ActiveRecord::Schema.define(version: 20161024194853) do
 
   create_table "channels", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "channels_users", id: false, force: :cascade do |t|
+    t.integer "channel_id"
+    t.integer "user_id"
+    t.index ["channel_id"], name: "index_channels_users_on_channel_id"
+    t.index ["user_id"], name: "index_channels_users_on_user_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "channel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_conversations_on_channel_id"
+    t.index ["user_id"], name: "index_conversations_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.text     "message"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["conversation_id"], name: "index_posts_on_conversation_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
