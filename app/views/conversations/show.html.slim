@@ -2,6 +2,25 @@
 
 h1 = @conversation.name
 
-= render( partial: "posts/show", collection: @conversation.posts, as: :post )|| "There are no posts"
+#conversation
+  .post(v-for="message in messages")
+    .user
+      | {{ message.user.name }}
+    .message
+      | {{ message.message }}
 
 = render "posts/new"
+= render "vue/vue"
+
+javascript:
+  $(function() {vue.messages = #{{  @conversation.posts.to_json( include: { user:  { only: :name } } )  }} })
+
+  App.posts = App.cable.subscriptions.create({
+    channel: "ConversationChannel",
+    conversation_id: "#{@conversation.id}"
+  }, {
+    received: function (data) {
+      //console.log(data)
+      vue.messages.push(data)
+    }
+  });

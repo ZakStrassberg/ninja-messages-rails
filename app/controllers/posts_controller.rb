@@ -11,11 +11,22 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to channel_conversation_path(@post.conversation.channel, @post.conversation, @post), notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
+        # binding.pry
+        # puts "\n\n\n\n!!!!!!!!!!!"
+        # puts request.format
+
+        ConversationChannel.broadcast_to(@post.conversation, @post.as_json( include: { user:  { only: :name } } ) )
+        ActionCable.server.broadcast("default", {newPost: @post})
+        format.html {
+          puts "\n\n\n\n\n\nHTML RESPONSE"
+          redirect_to channel_conversation_path(@post.conversation.channel, @post.conversation, @post), notice: 'Post was successfully created.' }
+        format.json {
+          puts "\n\n\n\n\n\nJSON RESPONSE"
+          render json: { status: :created }
+        }
       else
         format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.json { render json: { status: :unprocessable_entity, errors: @post.errors.full_messages }}
       end
     end
   end

@@ -1,0 +1,38 @@
+javascript:
+  var vue
+  $(function () {
+    vue = new Vue({
+      el: '#app',
+      data: {
+        messages: [],
+        activeUsers: [#{{ current_user.to_json if current_user }}],
+        guests: 0,
+        jQuery: jQuery
+      },
+      methods: {
+        newPost: function(postData) {
+          userEle = $('#active-users .user-'+postData.user_id+' .circle')
+          userEle.addClass("activity-animation")
+          setTimeout(function() {userEle.removeClass("activity-animation")}, 5000)
+        },
+        formSubmit: function () {
+          var unindexed_array = JSON.parse(JSON.stringify(jQuery('form#new_post').serializeArray()))
+          var json = {}
+          //console.log(unindexed_array)
+          for (var i = 0; i < unindexed_array.length; i++) {
+            //console.log(i, unindexed_array[i]['name'], unindexed_array[i]['value'])
+            json[unindexed_array[i]['name']] = unindexed_array[i]['value']
+          }
+          //console.log(json)
+          jQuery.post(' #{{ channel_conversation_posts_path(@conversation.channel, @conversation, format: :json) if @conversation}} ', json, function (res) {
+            console.log("response: ", res)
+            console.log('undisabling input button')
+            $('form#new_post input').prop("disabled", false)
+            if (res.status == 'created') {
+              jQuery("form#new_post textarea").val('')
+            }
+          })
+        }
+      }
+    })
+  })

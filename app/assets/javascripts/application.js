@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require tether
+//= require bootstrap
+//= require action_cable
+//= require vue/dist/vue
+
 //= require_tree .

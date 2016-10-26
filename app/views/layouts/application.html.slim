@@ -4,36 +4,27 @@ html
     title
       | NinjaMessenger
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
   body
-    .container
-      nav.navbar.navbar-light.bg-faded
-        = link_to "Ninja Messages", root_path, class: "navbar-brand"
-        ul.nav.navbar-nav
-          li.nav-item
-            = link_to "Item", root_path, class: "nav-link"
-          li.nav-item
-            = link_to "Item", root_path, class: "nav-link"
-          li.nav-item
-            = link_to "Item", root_path, class: "nav-link"
-        .user_actions.float-xs-right
-          - unless user_signed_in?
-            = link_to "Sign in", new_user_session_path
-            = link_to "Sign up", new_user_registration_path
-          - else
-            = link_to "Sign out", destroy_user_session_path, method: :delete
+    .container#app
+      = render 'layouts/nav'
+      #content.col-md-9
+        -if notice
+          p.notice
+            = notice
+        -if alert
+          p.alert
+            = alert
+        = yield
+      #active-users.col-md-3
+        #test
+          h3 Active Users:
+          div
+            | {{ guests }} {{ guests == 1 ? 'guest' : 'guests' }}
+          div(v-for="each in activeUsers" v-bind:class="'user-'+each.id")
+            .circle
+            | {{each.name}}
 
-      - breadcrumbs(autoroot: false).tap do |links|
-        - if links.any?
-          nav.breadcrumb
-        - links.each do |link|
-          = link_to link.text, link.url, class: ["breadcrumb-item", link.current? ? "active" : nil]
-          | (#{link.key})
-
-
-      p.notice
-        = notice
-      p.alert
-        = alert
-      = yield
+      /= render 'components/active-users'
+      /active-users.col-md-3

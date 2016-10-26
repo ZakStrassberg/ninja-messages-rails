@@ -1,6 +1,10 @@
-h1
-  | Channels
-ul
-  - @channels.each do |c|
-    li
-      = link_to c.name, channel_path(c)
+#channelsIndex
+  h1 Channels
+  #channels
+    - @channels.each do |c|
+      .channel
+        h4 = link_to c.name, channel_path(c)
+        span.meta = c.posts.count.to_s + " posts in " + c.conversations.count.to_s + " conversations"
+        p = c.description
+
+= render "vue/vue"

@@ -1,5 +1,5 @@
 h3 New Post
-= form_for [@conversation.channel, @conversation, @post] do |f|
+= form_for [@conversation.channel, @conversation, @post], html: {"v-on:submit.prevent": "formSubmit"} do |f|
   .field
     = f.label :message
     br

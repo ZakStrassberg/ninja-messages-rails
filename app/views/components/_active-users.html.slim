@@ -1,0 +1,12 @@
+javascript:
+  Vue.component('active-users', {
+    props: [''],
+    template: '#active-users-template',
+    data: function() { return {
+      activeUsers: []
+    } } // == @users.to_json
+  })
+
+script(type="text/x-template" id="active-users-template")
+  ul
+    li(v-for="each in active-users") {{each.name})
