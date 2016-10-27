@@ -1,0 +1,21 @@
+{
+  "name": "ninja-messenger",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZakStrassberg/ninja-messages-rails.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZakStrassberg/ninja-messages-rails/issues"
+  },
+  "homepage": "https://github.com/ZakStrassberg/ninja-messages-rails#readme"
+}
