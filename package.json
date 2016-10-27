@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
+  "directories": {},
   "scripts": {
   },
   "repository": {
@@ -17,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ZakStrassberg/ninja-messages-rails/issues"
   },
-  "homepage": "https://github.com/ZakStrassberg/ninja-messages-rails#readme"
+  "homepage": "https://github.com/ZakStrassberg/ninja-messages-rails#readme",
+  "dependencies": {
+    "bower": "^1.7.9"
+  }
 }
