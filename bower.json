@@ -1,0 +1,16 @@
+{
+  "name": "ninja-messenger",
+	"lib": {
+    "name": "bower-rails generated lib assets",
+    "dependencies": {
+    }
+  },
+  "vendor": {
+    "name": "bower-rails generated vendor assets",
+    "dependencies": {
+       "vue"    : "^2.0",
+      "socket.io": "^1.4.5",
+      "vue-socket.io" : ""
+    }
+  }
+}
