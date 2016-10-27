@@ -1,8 +1,5 @@
-# task :before_assets_precompile do
-#   # run a command which starts your packaging
-#   system('rake bower:install:deployment')
-# end
-#
-# # every time you execute 'rake assets:precompile'
-# # run 'before_assets_precompile' first
-# Rake::Task['assets:precompile'].enhance ['before_assets_precompile']
+task :before_assets_precompile do
+  system('npm install bower')
+end
+
+Rake::Task['assets:precompile'].enhance ['before_assets_precompile']
