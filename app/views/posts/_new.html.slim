@@ -1,9 +1,7 @@
 h3 New Post
-= form_for [@conversation.channel, @conversation, @post], html: {"v-on:submit.prevent": "formSubmit"} do |f|
-  .field
-    = f.label :message
-    br
-    = f.text_area :message
-
-    .actions
-      = f.submit "Create Conversation"
+= bootstrap_form_for [@conversation.channel, @conversation, @post], html: {"v-on:submit.prevent": "formSubmit"} do |f|
+  = f.text_area :message
+  - if current_user
+    = f.submit "Post", class: "btn btn-primary"
+  - else
+    = f.submit "Log in to post", class: "btn btn-outline-primary", disabled: true

@@ -1,10 +1,15 @@
 #channelsIndex
-  h1 Channels
+  h1
+    = "Channels "
+    = link_to "Add Channel", new_channel_path, class: "btn btn-outline-info btn-sm"
+
   #channels
     - @channels.each do |c|
-      .channel
-        h4 = link_to c.name, channel_path(c)
-        span.meta = c.posts.count.to_s + " posts in " + c.conversations.count.to_s + " conversations"
-        p = c.description
+      .channel.card
+        .card-block
+          h4.card-title = link_to c.name, channel_path(c)
+          span.meta = pluralize(c.posts.count, "post") + " in " + pluralize(c.conversations.count, "conversation")
+          - unless c.description == ''
+            p = c.description
 
 = render "vue/vue"

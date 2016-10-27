@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_and_belongs_to_many :channels
-  has_many :messages
+  has_many :messages, foreign_key: 'recipient_id'
 
 end

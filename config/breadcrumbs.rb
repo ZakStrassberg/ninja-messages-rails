@@ -6,10 +6,19 @@ crumb :channels do
   link "Channels", channels_path
 end
 
+crumb :new_channel do
+  link "New channel", new_channel_path
+  parent :channels
+end
 
 crumb :channel do |channel|
-  link channel.name, channel_path(channel)
+  link channel.name, channel
   parent :channels
+end
+
+crumb :edit_channel do |channel|
+  link "Edit channel", channel
+  parent :channel, channel
 end
 
 # crumb :channel_conversations do |channel|

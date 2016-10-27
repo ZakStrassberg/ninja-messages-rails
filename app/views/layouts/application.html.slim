@@ -1,13 +1,13 @@
 doctype html
 html
   head
-    title
-      | NinjaMessenger
+    title NinjaMessenger
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   body
-    .container#app
+    div.container#app
+      /(class="container" id="app #{controller_name} #{[controller_name, action_name].join('-')}")
       = render 'layouts/nav'
       #content.col-md-9
         -if notice
@@ -18,13 +18,14 @@ html
             = alert
         = yield
       #active-users.col-md-3
-        #test
-          h3 Active Users:
-          div
+        #test.card
+          .card-block
+            h3.card-title Active Users
+            span.circle
             | {{ guests }} {{ guests == 1 ? 'guest' : 'guests' }}
-          div(v-for="each in activeUsers" v-bind:class="'user-'+each.id")
-            .circle
-            | {{each.name}}
+            div(v-for="each in activeUsers" v-bind:class="'user-'+each.id")
+              a.circle(href="#")
+              a(v-bind:href="'/users/'+ each.id ") {{ each.name }}
 
       /= render 'components/active-users'
       /active-users.col-md-3

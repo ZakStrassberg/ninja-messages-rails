@@ -4,4 +4,5 @@ class Channel < ApplicationRecord
   has_many :posts, through: :conversations
 
   validates_uniqueness_of :name
+  validates_presence_of :name
 end

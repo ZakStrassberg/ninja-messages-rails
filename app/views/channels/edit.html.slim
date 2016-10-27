@@ -1,0 +1,10 @@
+- breadcrumb :edit_channel, @channel
+
+h2 New Channel
+= bootstrap_form_for @channel do |f|
+  = f.text_field :name, autofocus: true
+  = f.text_area :description, size: "60x6"
+  = f.submit "Create Channel", class: "btn btn-primary"
+  = link_to "Cancel", @channel, class: "btn btn-outline-warning"
+
+  = render "vue/vue"

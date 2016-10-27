@@ -14,9 +14,11 @@ class PostsController < ApplicationController
         # binding.pry
         # puts "\n\n\n\n!!!!!!!!!!!"
         # puts request.format
-
         ConversationChannel.broadcast_to(@post.conversation, @post.as_json( include: { user:  { only: :name } } ) )
-        ActionCable.server.broadcast("default", {newPost: @post})
+
+        post = @post.as_json
+        post['path'] = channel_conversation_path(@post.conversation.channel, @post.conversation, @post)
+        ActionCable.server.broadcast("default", {newPost: post})
         format.html {
           puts "\n\n\n\n\n\nHTML RESPONSE"
           redirect_to channel_conversation_path(@post.conversation.channel, @post.conversation, @post), notice: 'Post was successfully created.' }

@@ -1,0 +1,8 @@
+h1 = "Private message " + @message.recipient.name
+= bootstrap_form_for [@user, @message], url: user_message_path(@user) do |f|
+  = f.hidden_field :private, value: true
+  = f.text_area :content, label: "New Message"
+  = f.submit "Send #{@user.name} a message!", class: "btn btn-primary"
+
+
+= render "vue/vue"

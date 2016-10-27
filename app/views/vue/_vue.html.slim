@@ -9,11 +9,19 @@ javascript:
         guests: 0,
         jQuery: jQuery
       },
+      computed: {
+        reversedMessages: function() {
+          return this.messages.slice(0).reverse()
+        }
+      },
       methods: {
         newPost: function(postData) {
           userEle = $('#active-users .user-'+postData.user_id+' .circle')
           userEle.addClass("activity-animation")
-          setTimeout(function() {userEle.removeClass("activity-animation")}, 5000)
+          userEle.attr("href", postData.path)
+          setTimeout(function() {
+            userEle.removeClass("activity-animation")
+          }, 2000)
         },
         formSubmit: function () {
           var unindexed_array = JSON.parse(JSON.stringify(jQuery('form#new_post').serializeArray()))

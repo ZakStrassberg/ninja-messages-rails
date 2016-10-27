@@ -2,17 +2,18 @@ nav.navbar.navbar-light.bg-faded
   = link_to "Ninja Messages", root_path, class: "navbar-brand"
   ul.nav.navbar-nav
     li.nav-item
-      = link_to "Item", root_path, class: "nav-link"
+      = link_to "Messages", messages_path, class: "nav-link"
     li.nav-item
       = link_to "Item", root_path, class: "nav-link"
     li.nav-item
       = link_to "Item", root_path, class: "nav-link"
   .user_actions.float-xs-right
     - unless user_signed_in?
-      = link_to "Sign in", new_user_session_path
-      = link_to "Sign up", new_user_registration_path
+      = link_to "Sign in", new_user_session_path, class: "btn btn-primary"
+      = link_to "Sign up", new_user_registration_path, class: "btn btn-outline-primary"
     - else
-      = link_to "Sign out", destroy_user_session_path, method: :delete
+      = link_to "Profile", user_path(current_user), class: "btn btn-primary"
+      = link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-primary"
 
 - breadcrumbs(autoroot: false).tap do |links|
   - if links.any?

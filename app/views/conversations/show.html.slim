@@ -1,15 +1,15 @@
 - breadcrumb @conversation
 
 h1 = @conversation.name
-
-#conversation
-  .post(v-for="message in messages")
-    .user
-      | {{ message.user.name }}
-    .message
-      | {{ message.message }}
-
 = render "posts/new"
+#conversation
+  .post.card(v-for="message in reversedMessages")
+    .card-block
+      .user
+        | {{ message.user.name }}
+      .message
+        | {{ message.message }}
+
 = render "vue/vue"
 
 javascript:
