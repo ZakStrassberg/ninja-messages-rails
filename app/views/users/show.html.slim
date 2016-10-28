@@ -13,8 +13,9 @@ h3 Messages
   .message.card
     .card-block
       header.card-title
-        = "From: " + User.find(message.sender_id).name + " "
-        = time_ago_in_words message.created_at + " ago"
+        = "From: " + User.find(message.sender_id).name + " - "
+        = time_ago_in_words message.created_at
+        = " ago"
       p = message.content
 
 = render "vue/vue"
