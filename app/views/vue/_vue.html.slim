@@ -32,7 +32,7 @@ javascript:
             json[unindexed_array[i]['name']] = unindexed_array[i]['value']
           }
           //console.log(json)
-          jQuery.post(' #{{ channel_conversation_posts_path(@conversation.channel, @conversation, format: :json) if @conversation.persisted? }} ', json, function (res) {
+          jQuery.post(' #{{ channel_conversation_posts_path(@conversation.channel, @conversation, format: :json) if @conversation and @conversation.persisted? }} ', json, function (res) {
             console.log("response: ", res)
             console.log('undisabling input button')
             $('form#new_post input').prop("disabled", false)
