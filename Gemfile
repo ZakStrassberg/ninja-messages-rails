@@ -31,7 +31,6 @@ gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'gretel'
 gem "bower-rails"
 gem 'actioncable'
-
 gem 'bootstrap_form'
 
 source 'https://rails-assets.org' do
