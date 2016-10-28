@@ -1,3 +1,5 @@
 .post
-  .user = post.user.name || post.user
+  header.row
+    .user.col-md-8 = post.user.name || post.user
+    .time.col-md-4 = time_ago_in_words post.created_at
   .message = post.message

@@ -2,3 +2,5 @@ h2 New Conversation
 = bootstrap_form_for [@conversation.channel, @conversation] do |f|
   = f.text_field :name, autofocus: true
   = f.submit "Create Conversation", class: "btn btn-primary"
+
+= render "vue/vue"
