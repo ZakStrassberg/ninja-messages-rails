@@ -10,10 +10,11 @@ p User description/profile should go here if there's time
 
 h3 Messages
 - @user.messages.where(private: false).each do |message|
-  .message
-    header
-      = User.find(message.sender_id).name
-      = time_ago_in_words message.created_at
-    p = message.content
+  .message.card
+    .card-block
+      header.card-title
+        = "From: " + User.find(message.sender_id).name + " "
+        = time_ago_in_words message.created_at
+      p = message.content
 
 = render "vue/vue"
