@@ -3,10 +3,10 @@ nav.navbar.navbar-light.bg-faded
   ul.nav.navbar-nav
     li.nav-item
       = link_to "Messages", messages_path, class: "nav-link"
-    li.nav-item
-      = link_to "Item", root_path, class: "nav-link"
-    li.nav-item
-      = link_to "Item", root_path, class: "nav-link"
+    /li.nav-item
+    /  = link_to "Item", root_path, class: "nav-link"
+    /li.nav-item
+    /  = link_to "Item", root_path, class: "nav-link"
   .user_actions.float-xs-right
     - unless user_signed_in?
       = link_to "Sign in", new_user_session_path, class: "btn btn-primary"
@@ -20,4 +20,3 @@ nav.navbar.navbar-light.bg-faded
     nav.breadcrumb
       - links.each do |link|
         = link_to link.text, link.url, class: ["breadcrumb-item", link.current? ? "active" : nil]
-        | (#{link.key})

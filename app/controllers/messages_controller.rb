@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :destroy, :update, :edit]
+  before_action :authenticate_user!
 
   def index
     @messages = current_user.messages.where(private: true)

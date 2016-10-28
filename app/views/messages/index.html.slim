@@ -1,10 +1,11 @@
 h1 Private messages
 
 - @messages.each do |message|
-  .message
-    header
-      = "From: " + message.sender.name
-    p = message.content
+  .message.card
+    .card-block
+      header.card-title
+        = "From: " + message.sender.name
+      p = message.content
 
 
 = render "vue/vue"
