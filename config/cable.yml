@@ -10,7 +10,7 @@
 
 production: &production
   adapter: redis
-  url: ENV["REDIS_URL"]
+  url: redis://redistogo:c2d001b173f176043777889d4bba5a12@sculpin.redistogo.com:10803/
 development: &development
   adapter: async
   url: redis://localhost:6379
